@@ -1,0 +1,33 @@
+\documentclass[]{article}
+\usepackage{amsfonts, amsmath}
+%opening
+\title{Problem 13}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+(1) A point (x,y) in $\mathbb{R}^2$ is said to be a lattice point if x and y, are both integers.  Show that for any set S of 13 lattice points in $\mathbb{R}^2$, there exist four points in S whose centroid is also a lattice point, where the centroid of 4 lattice points $(x_i,y_i)$, $i = 1,2,3,4$ is $\left(\frac{x_1+x_2+x_3+x_4}{4}, \frac{y_1+y_2+y_3+y_4}{4}\right)$.\\
+
+      
+\noindent(2) What is the smallest number of lattice points that S must have to guarantee that there exist five points in S whose centroid is also a lattice point.  
+
+
+\section{Solution to (1)}
+First, we will solve an easier problem: how many lattice points are required for a midpoint to be guaranteed? This will be used to show that if we can get a guarantee for n points and we have n midpoints, then the midpoint of two midpoints will be the desired result.\\
+
+For a midpoint to be guaranteed, we need $(x_1, y_1)$ and $(x_2, y_2)$ such that their sum is divisible by 2. Consider the function $f(x, y) = (x \text{ mod } 2, y \text{ mod } 2)$.\\
+
+The range of $f$ is: $\{(0,0), (0, 1), (1,0), (1,1)\}$. Now, we need a domain on which $f$ is not one-to-one, then we know that some value is mapped to more than once, and we can take those two values, add them, and get a point which is $(0,0)$ mod 2. Since the range of $f$ has only 4 elements, a domain of 5 elements will guarantee one point in the range of $f$ will be mapped to more than once by the pigeonhole principle. We now have a criterion which guarantees a midpoint which is a lattice point.\\
+
+Now we are ready to solve problem (1). Suppose we have a set of 13 lattice points $\{p_1, p_2, \ldots, p_{13}\}\subset \mathbb{Z}^2$. Taking groups of 5 lattice points, we are guaranteed that there are some $p_i$ and $p_j$, $i \neq j$, such that $p_i+p_j$ has components divisible by 2.\\
+
+Thus, let $p_1$ and $p_2$ in the set $\{p_1, p_2, \ldots, p_5\}$ be those points and their midpoint be $M_1$. We take the next 5 points, $\{p_3, p_4, \ldots, p_7\}$, getting another midpoint from $p_3$ and $p_4$, $M_2$. We can continue this process to get 5 midpoints: $\{M_1, M_2, \ldots, M_5\}$. But a set of 5 lattice points determines a midpoint, so the midpoint of 2 of the midpoints is a lattice point. Therefore, we finally get:
+
+$$\frac{M_i + M_j}{2} = \frac{1}{2} \left(\frac{p_{i1} + p_{i2}}{2} + \frac{p_{j1} + p_{j2}}{2}\right) = \frac{p_{i1} + p_{i2} + p_{j1} + p_{j2}}{4}$$
+
+Which is a lattice point satisfying the form of the centroid of four points. 
+
+\end{document}

@@ -1,0 +1,77 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%opening
+\title{Problem 3}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+ Find the number of divisors of $14,400,000$ which are not perfect squares, not perfect cubes and not perfect fourth powers. 
+
+\section{Factorization and Total Divisors}
+$14,400,000$ can be written as the product of primes:
+
+$$14,400,000=2^9\cdot 3^2\cdot 5^5$$
+
+Therefore, any divisor of $14,400,000$ must divide at least one of the combinations of
+
+$$2^a\cdot 3^b\cdot 5^c$$
+
+where $a,b,c \in \mathbb{Z}, a \in [0, 1, 2, ..., 9], b \in [0, 1, 2], $ and $c \in [0, 1, 2, 3, 4, 5 ]$. There must then be $(9-0+1)(2-0+1)(5-0+1) = 180$ divisors in total, since there are $(9+1)$ options for $a$, $(2+1)$ options for $b$, and $5+1$ options for $c$.
+
+\section{The Squares}
+To find all of the square divisors, we need only find all combinations of the square divisors of the factors $2^9$, $3^2$, and $5^5$.\\
+
+Using a table:\\
+$$
+\begin{array}{cccccc}
+	2^9 \vert & 1 & 2^2 & 4^2 & 8^2 & 16^2 \\ 
+	3^2 \vert & 1 & 3^2 & \space & \space & \space \\ 
+	5^5 \vert & 1 & 5^2 & 25^2 &  \space &\space 
+\end{array} 
+$$
+
+There are $5\cdot 2 \cdot 3 = 30$ different  perfect square divisors. You could also find this number by doing integer division of the powers and adding one, so for $2^9$: $\lfloor 9/2 \rfloor = 4$, add one, $\lfloor 9/2 \rfloor + 1 = 5 $. For divisors of power $n$, we would have $\lfloor power/n\rfloor + 1$. We will need to know the actual values, however, since the squares, cubes, and fourth powers may coincide, but this is helpful to check if there are any missing divisors in the table.
+
+\section{The Cubes}
+To find the perfect cube divisors, we employ the same technique as before:
+
+$$
+\begin{array}{cccccc}
+2^9 \vert & 1 & 2^3 & 4^3 & 8^3 &  \\ 
+3^2 \vert & 1 &  & \space & \space & \space \\ 
+5^5 \vert & 1 & 5^3 & &  \space &\space 
+\end{array} 
+$$
+
+And so, there are $4\cdot 1 \cdot 2 = 8$ perfect cube divisors.
+
+\section{The Fourth Powers}
+$$
+\begin{array}{cccccc}
+2^9 \vert & 1 & 2^4 & 4^4 &  &  \\ 
+3^2 \vert & 1 &  & \space & \space & \space \\ 
+5^5 \vert & 1 & 5^4 & &  \space &\space 
+\end{array} 
+$$
+
+There are $3\cdot 1 \cdot 2$ fourth power divisors.
+\section{Solution}
+
+There are a total of $180$ divisors of $14,400,000$ where $30, 8$, and $6$ divisors are perfect powers of $2, 3$, and $4$ respectively. But these divisors are not all unique because of course $1^2=1^3=1^4$. All of the fourth power divisors coincide with a subset of the square divisors:\\
+
+$\{1^4, 2^4, 4^4, 5^4, (2\cdot5)^4, (4\cdot5)^4\} \subset$ square divisors.\\
+
+Therefore, subtracting the amount of fourth power divisors would be double counting. For the cube divisors, a few are contained within the squares as well: $1^3 = 1^2$ and $ 4^3 = 8^2$. So there are 
+
+$$180 - [30 + (6-6) + (8-2)] = 180 - 36 = 144$$ divisors that are not squares, cubes, or fourth powers, which interestingly, is a perfect square.
+
+
+
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass[]{article}
+
+%opening
+\title{Problem 8}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{Solution}
+
+We can find the total amount of ways 5 Xs can be in a 3 by 3 grid by breaking it up into smaller problems, that of the rows, columns, diagonals, and then adding the union and subtracting the intersections which double count.\\
+
+For the rows:
+$$
+\begin{array}{ccc}
+	X & X & X \\ 
+	\ast & * & * \\ 
+	\ast & * & *
+\end{array} 
+$$
+
+There are 3 rows and no two rows can be occupied by the 5 Xs at once, so there are $3{6\choose2}$ ways of filling rows.\\
+
+For the columns:
+$$
+\begin{array}{ccc}
+X & * & * \\ 
+X & * & * \\ 
+X & * & *
+\end{array} 
+$$
+
+There are 3 columns and no two can be occupied by the 5 Xs at once, but for each column, we have already counted the occupation of that column plus the 3 rows, hence there are $3({6\choose 2} - 3) = 3{6\choose 2} - 9$ ways to fill the columns that have not already been counted.\\
+
+For the diagonals:
+$$
+\begin{array}{ccc}
+X & * & * \\ 
+\ast & X & * \\ 
+\ast & * & X
+\end{array} 
+$$
+
+There are again ${6\choose 2}$ total ways, but 6 have already been counted, so there are ${6\choose 2} - 6$ ways for one diagonal. For the other, it is the same, except the case where both diagonals are occupied is subtracted (since it has already been counted), resulting in ${6\choose 2} - 7$ ways.\\
+
+This totals to: $3{6\choose 2} + 3{6\choose 2} - 9 + {6\choose 2}-6+{6\choose 2}-7 = 8{6\choose 2} - 22 = 98$ ways.
+\end{document}

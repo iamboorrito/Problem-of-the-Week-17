@@ -1,0 +1,29 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+\usepackage{float}
+
+%opening
+\title{Problem 5}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+Is it possible to tile a 9x9 chessboard with 3 corners removed using 3x1 rectangles?
+
+\section{Solution}
+Suppose we color the chessboard with three different colors: red, blue, and black such that the pattern (red, blue, black) repeats along the sides, creating diagonals of constant color. Then any 3x1 rectangle we place on the board will cover exactly one of each color.
+
+\begin{figure}[H]
+\centering
+
+\label{fig:CornersRemovedWithTrominoes}
+\includegraphics[width=0.6\linewidth]{"CornersRemoved With Trominoes"}
+\caption{The tiles always cover exactly one of each color, therefore we would need (81-3)/3 = 78/3 = 26 tiles. Here the 3x1 rectangular tiles are shown with rounded corners to stand out.}
+\end{figure}
+
+The tiles removed on the corners were of the colors: red, black, and black. Therefore, there are 26 red, 25 black, and 27 blue. But each tile must cover exactly one of each color and so it is not possible to tile the board. Since a chessboard is symmetric, we could rotate the board and paint it such that we are always left with an unbalanced amount of colors. Therefore, it is impossible to tile this board.
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass[]{article}
+
+%opening
+\title{Problem 6}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+\maketitle
+\section{The Problem}
+Find a real-valued function $f$ such that $f(x) = \frac{1}{2} - \displaystyle{\int_{0}^{x} cos(t)[f(t)]^2 dt}$.
+
+\section{Solution}
+
+Consider the derivative of $f$:
+
+$$\frac{d}{dx}f(x) = \frac{d}{dx}(\frac{1}{2} -\int_{0}^{x} cos(t)[f(t)]^2 dt)$$
+$$ \frac{df}{dx} = -\frac{d}{dx}\int_{0}^{x} cos(t)[f(t)]^2 dt$$
+$$ \frac{df}{dx} = -cos(x)[f(x)]^2$$
+
+Let $f' = \frac{df}{dx}$ and $f^2 = [f(x)]^2$ and suppose $f^2 \neq 0$,
+
+$$f' = -f^2cos(x)$$
+$$\frac{f'}{f^2} = -cos(x)$$
+$$\displaystyle{\int \frac{f'}{f^2} dx} = \displaystyle{\int -cos(x) dx}$$
+
+$$\displaystyle{\int \frac{f'}{f^2} dx} = -sin(x) + c$$
+
+Let $u = f(x)$, then $du = f'(x) dx$:
+
+$$\displaystyle{\int \frac{f'}{u^2} \frac{du}{f'}} = \displaystyle{\int \frac{1}{u^2}du} = - \frac{1}{u} + c_2= -sin(x) + c$$
+
+$$-\frac{1}{f(x)} = -sin(x) + d$$
+
+$$f(x) = \frac{1}{sin(x) - d}$$
+
+From the problem statement, we know that $f(0) = \frac{1}{2}$, so
+
+$$f(0) = \frac{1}{2} = \frac{1}{sin(0) - d} = \frac{1}{-d}$$
+$$d = -2$$
+
+$$f(x) = \frac{1}{sin(x) + 2}$$
+
+\section{Checking Solution}
+Checking to see that $f$ satisfies $f(x) = \frac{1}{sin(x)+2}= \frac{1}{2} - \displaystyle{\int_{0}^{x} \frac{cos(t)}{(sin(t)+2)^2} dt}$
+
+By substitution, $u=sin(t)+2$, $du = cos(t)dt$:
+
+$$f(x) = \frac{1}{2} - \displaystyle{\int_{2}^{sin(x)+2} \frac{1}{u^2} du}$$
+
+$$= \frac{1}{2} + \displaystyle{\left[\frac{1}{u}\right]_{2}^{sin(x)+2}} = \frac{1}{2} + (\frac{1}{sin(x)+2} - \frac{1}{2})$$
+
+$$
+ = \frac{1}{sin(x)+2} = f(x)
+$$
+
+\end{document}

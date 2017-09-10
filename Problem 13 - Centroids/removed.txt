@@ -1,0 +1,69 @@
+Let $r(x) = $ the difference between $a$ and the closest multiple of 5 greater than $x$ and let $\theta = r(a)$ and $\phi = r(b)$.\\
+
+We need to find the coefficients for the linear combination: 
+
+$$c_1\begin{bmatrix}
+0 \\
+0 \\
+\end{bmatrix} 
++ 
+c_2\begin{bmatrix}
+1 \\
+0 \\
+\end{bmatrix} 
++ 
+c_3\begin{bmatrix}
+0 \\
+1 \\
+\end{bmatrix} 
++ 
+c_4\begin{bmatrix}
+1 \\
+1 \\
+\end{bmatrix} 
++ 
+\begin{bmatrix}
+a \\
+b \\
+\end{bmatrix}  
+= 
+\begin{bmatrix}
+0 \\
+0 \\
+\end{bmatrix}\text{ (mod 5)}$$ 
+
+Subject to $\displaystyle{\sum_{i=1}^{4} c_i = 4}$.\\
+
+We set $c_4 = min(\theta, \phi)$. This is because we need to find out how many times we can add 1 to both $a$ and $b$ together. The value of $c_1$ is whatever is left over in order to ensure 5 points are used, $c_1 = 4-min(\theta, \phi) - \left|\theta - \phi \right|$.\\
+
+If $\theta = \phi$, then $c_2 = c_3 = 0$. (corresponding to $a = \lambda b$)\\
+\indent If $\theta > \phi$, then, $c_2 = \left|\theta - \phi \right|$, $c_3 = 0$.\\
+\indent Else $\theta < \phi$, then, $c_2 = 0$, $c_3 = \left|\theta - \phi \right|$.
+\pagebreak
+
+That is, there is always a solution of either:
+
+$$
+\begin{bmatrix}
+c_1 \\
+c_2 \\
+c_3 \\
+c_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+4-min(\theta, \phi) - \left|\theta - \phi \right|\\
+\left|\theta - \phi \right| \\
+0 \\
+min(\theta, \phi)
+\end{bmatrix}
+\text{ or }
+\begin{bmatrix}
+4-min(\theta, \phi) - \left|\theta - \phi \right|\\
+0 \\
+\left|\theta - \phi \right| \\
+min(\theta, \phi)
+\end{bmatrix}
+$$
+
+Therefore, 17 is a lower bound.

@@ -1,0 +1,56 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+%opening
+\title{Problem 7}
+\author{Evan Burton, ID:010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+Show that the determinant of A is an integer, where \\
+
+$$ A = \left[
+\begin{matrix}
+cos(1) & cos(11) & \cdots & cos(91) \\ 
+cos (2) & cos (12) & \cdots & cos (92) \\ 
+\vdots & \vdots  & \ddots & \vdots \\ 
+cos (10) & cos (20) & \cdots & cos (100)
+\end{matrix}\right]
+$$
+ and the angles are in radians.
+\section{Solution}
+Consider $e^{i\theta} = cos(\theta) + i sin(\theta)$. Since cosine is even, $cos(-\theta) = cos(\theta)$ and since sine is odd, $sin(-\theta) = -sin(\theta)$. \\
+
+Then, $e^{-i \theta} = e^{i(-\theta)} = cos(-\theta) + i sin(-\theta) = cos(\theta) - i sin(\theta)$.
+
+$$cos(\theta) = \frac{1}{2}(e^{i\theta} + e^{-i\theta}) = cosh(i\theta)$$
+
+
+
+We will need a property of hyperbolic cosine:
+$$4 cosh(i\theta)cosh(i) = (e^{i\theta} + e^{-i\theta})(e^i + e^{-i})$$
+$$= e^{i\theta + i} + e^{i\theta - i} + e^{-i\theta + i} + e^{-i\theta - i}$$
+$$= e^{i(\theta + 1)} + e^{i(\theta - 1)} + e^{-i(\theta - 1)} + e^{-i(\theta+1)}$$
+$$= 2 cosh(i(\theta + 1)) + 2 cosh(i(\theta - 1))$$
+$$ 2 cosh(i\theta)cosh(i) = cosh(i(\theta + 1)) + cosh(i(\theta - 1))$$
+Since $cos(\theta) = cosh(i\theta)$,
+
+$$cos(\theta + 1) = 2 cos(1) cos(\theta) + (-1) cos(\theta - 1)$$
+\pagebreak
+
+Equivalently,
+
+$$cos(u) = 2 cos(1) cos(u-1) + (-1) cos(u - 2)$$
+
+We can write the angle of any entry in A as $u = r + 10(j-1)$, where $r$ is the row and $j$ is the column. Therefore, we can subtract $1$ from $u$ to get the row above it as long as $r > 1$.\\
+
+Let $u = 3 + 10(j-1)$ where $j = 1, 2, \dots, 10$. Then $$A(3, j) = cos(u)$$ We can get all of Row 2 by $$A(2, j) = cos(u-1)$$ and all of Row 1 by $$A(1, j) = cos(u-2)$$. 
+
+We can write $cos(u)$ as a linear combination of $cos(u-1)$ and $cos(u-2)$, where those are entries of Row 2 and Row 1, respectively. More generally, let $A(r)$ be the $r^{th}$ row of $A$, $r \geq 3$, 
+
+$$A(r) = (2cos(1))A(r-1) + (-1)A(r-2)$$
+
+Therefore, Row 3 is a linear combination of Rows 1 and 2 and $\det A = 0$, which is an integer.
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[]{article}
+\usepackage{amsfonts}
+
+%opening
+\title{Problem 9}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+Let $x_0 = 0$, $x_1 = 1$, and for $n \geq 1$,
+
+$$x_{n+1} =\frac{x_n}{n+1} + (1 - \frac{1}{n+1})x_{n-1}$$  
+
+Determine $\displaystyle{\lim_{n \rightarrow \infty}} x_n$.
+   
+\section{Solution}
+Suppose $n \in \mathbb{N}, n \geq 1$, then $x_n = \displaystyle{\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}}$
+
+For $n = 1$:
+
+$x_1 = \displaystyle{\sum_{k=1}^{1} \frac{(-1)^{k+1}}{k}} = \frac{1}{1} = 1$\\
+
+Suppose the proposition is true up to $n$ and $n > 1$, we need to show that the proposition is still true for $n+1$.
+
+$$x_{n+1} = \displaystyle{\sum_{k=1}^{n+1} \frac{(-1)^{k+1}}{k}} = 
+\frac{(-1)^{n+2}}{n+1} + \displaystyle{\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}}
+$$
+
+$$=
+\frac{(-1)^{n+2}}{n+1} + \frac{(-1)^{n+1}}{n} + \displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}
+$$
+
+$$=
+(-1)^{n+1}\left[\frac{1}{n} - \frac{1}{n+1}\right] + \displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}
+$$
+
+$$=
+\frac{(-1)^{n+1}}{n(n+1)}+\displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}
+=
+\frac{1}{n+1}\left[\frac{(-1)^{n+1}}{n}+{(n+1)}\displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}\right]
+$$
+
+$$=
+\frac{1}{n+1}\left[\frac{(-1)^{n+1}}{n}+n\displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}+\displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}\right]
+$$
+
+$$=
+\frac{1}{n+1}\left[n\displaystyle{\sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{k}}+\displaystyle{\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}}\right] = \frac{nx_{n-1} +x_n}{n+1}
+$$
+
+$$=
+\frac{x_n}{n+1} + \frac{nx_{n-1}}{n+1}
+=
+\frac{x_n}{n+1} + \left(1 - \frac{1}{n+1}\right)x_{n-1}
+$$
+
+
+Which is the definition of $x_{n+1}$ stated in the problem.\\
+
+Therefore, $x_n = \displaystyle{\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}}$ and the limit 
+
+$$\displaystyle{\lim_{n\rightarrow \infty} x_n} = \lim_{n\rightarrow \infty} \displaystyle{\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}} = ln(2)$$
+
+Of course, a proof by induction is not very constructive. My motivation for the proposition was that the sequence ${x_n-x_{n-1}}$ gave the terms of the Maclaurin series of $ln(1+x)$ at $x = 1$ and the first few values of $x_n$ seemed to confirm this, so it was a natural candidate for induction. 
+\end{document}

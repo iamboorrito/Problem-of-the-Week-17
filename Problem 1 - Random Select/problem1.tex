@@ -1,0 +1,62 @@
+\documentclass[]{article}
+\usepackage{amsthm, amsfonts, amsmath}
+
+\theoremstyle{definition}
+\newtheorem{definition}{\textbf{Definition}}[section]
+\newtheorem*{theorem}{Theorem}
+
+%opening
+\title{Problem 1}
+\author{Evan Burton}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+A game starts with 1001 numbers 1016, 1017, , 2015, 2016. During each turn two numbers are selected, say j and k. The two numbers j and k are removed and replaced by the single number jk + j + k. After 1000 turns you are left with a single number. What can you say about the final number?
+
+\section{Solution}
+\begin{definition}
+	A multiset is a set with multiplicity.
+\end{definition}
+
+\begin{definition}
+	Let $M-N$ denote the usual set difference, but with multiplicity in mind. For example, if $M = \{1, 1, 1\}$ and $N = \{1, 1\}$, then $M-N = \{1\}$.
+\end{definition}
+
+\begin{definition}
+	Define $M \uplus N$ as the union of $M$ and $N$, adding multiplicities. Then, $\{1, 2\} \uplus \{2, 3\} = \{1, 2, 2, 3\}$.
+\end{definition}
+
+Now, let $T$ be a relation that takes a multiset $X$ with $n+1$ real elements, $n \geq 1$, and returns a multiset $Y$ with $n$ real elements such that \[Y = \{x_i x_j + x_i + x_j\} \uplus X - \{x_i, x_j\}\] for arbitrary $x_i$ and $x_j$. 
+
+Let $H$ be a function which acts on a multiset $X$ as described above and returns the only element of $ T^n(X)$.
+Calculations quickly show that $T(X)$ is a unique real number for $|X| = 2$, and by induction, $T^n(X) \in \mathbb{R}$ because $T^{n+1} = T \circ T^n$. In fact, \[H(\{a, b, c\}) = (1+a)(1+b)(1+c)\]
+leading to the more general result:
+
+\begin{theorem}
+	If $X$ is a multiset and $|X| = n+1$, then \[H(X) = -1 + \prod_{x \in X} (1+x)\]
+	
+	\begin{proof}
+		For $n = 1$, $X = {x_1, x_2}$.
+		
+		\[H(X) = T(X) = x_1 x_2 + x_1 + x_2\]
+		\[ = -1 + 1 + x_1 x_2 + x_1 + x_2\]
+		\[= -1 + (1+x_1)(1+x_2)\]
+		\[= -1 + \prod_{x \in X} (1+x)\]
+		
+		Suppose the theorem is true for $n \geq 1$. Let $Y = T(X)$,
+		\[T^{n+1}(X) = T^n \circ T(X) = T^n(Y) = -1 + \prod_{y \in Y} (1+y)\]
+		By the definition of $Y = T(X)$:
+		\[= -1 + \prod_{x \in X-\{x_i, x_j\}} (1+x)(1-1+(1+x_i)(1+x_j))\]
+		\[= -1 + \prod_{x \in X-\{x_i, x_j\}}(1+x)(1+x_i)(1+x_j)\]
+		\[= -1 + \prod_{x \in X}(1+x)\]
+		
+	\end{proof}
+\end{theorem}
+
+Therefore, for $X = \{1016, 1017, \dots, 2016\}$, we have the solution
+ \[H(X) = -1 + \prod_{x \in X}(1+x)\]
+ \[= -1 + \prod_{i = 1017}^{2017} i = -1 + \frac{2017!}{1016!}\]
+\end{document}

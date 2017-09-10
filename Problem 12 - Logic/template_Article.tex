@@ -1,0 +1,41 @@
+\documentclass[]{article}
+
+%opening
+\title{Problem 12}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+In a large calculus class there are 101 students. During the lecture one day each student shows up at the lecture once, arriving at a time t and leaving at a later time s.  Show that at least one of the following is true, a) at some point during the lecture 11 (or more) students were at the lecture, or b) for some group of 11 students, no two students attended the lecture at the same time.
+
+\section{Solution}
+First we will need some definitions,\\
+
+Let $N(t,s)$ be the number of students who attended lecture between times \indent$t$ and $s$.\\
+
+Let $P(n)$ be the set of all permutations of size $n$ of the set of 101 students \indent\{1, 2, 3, $\ldots$ , 100, 101\}.\\
+
+Let $L(x,y)$ be the statement: \textit{x and y attended lecture at the same time}.\\
+
+Then we need to prove that the following statement is true:
+
+$$\exists(t,s) N(t,s) \geq 11 \lor [\exists(g\in P(11)) \lnot \exists(x,y\in g) L(x,y)\land x\neq y]$$
+
+Which translates to: There is a period of time where at least 11 students were at the lecture or there is a group of 11 students where no distinct pair attended lecture at the same time.\\
+
+Suppose not. Then,
+
+$$\forall(t,s) N(t,s) < 11 \land [\forall(g\in P(11)) \exists(x,y\in g) L(x,y) \land x\neq y]$$
+
+That is, a maximum of 10 students were ever in lecture at once and for all groups of 11 students, some pair of distinct students attended at the same time.\\
+
+Suppose at most 10 students attend lecture at once. Then there are at least 11 groups of students in total. This can be seen by \{1 to 10\}, \{11 to 20\}, \ldots, \{91 to 100\}, and \{101\}, alternatively, $\frac{101-1}{10} + 1 = 11$. \\
+
+Since we are guaranteed at least 11 groups of students, we may pick any student unique\footnote{The reason uniqueness is important is because we could have this situation: \{1,2,3,4\}, \{1,2,3,5\} where fewer students leave than the amount that stay. Thus, student 4 would be unique to his group since the intersection of his group and all others does not include him.} to their group until we have a new group of size 11, thus there is a group of 11 where no pair would have been in lecture at the same time, which is a contradiction. If students attended in smaller groups, then there would be more, smaller, groups to choose unique students from in order to reach a contradiction. For example, if students attended in pairs, then we could take one student, unique to their pair, from each of 11 pairs.\\
+
+Then, the disjunction in question must be true, which is only possible if at least one of the disjuncts must be true.
+
+\end{document}

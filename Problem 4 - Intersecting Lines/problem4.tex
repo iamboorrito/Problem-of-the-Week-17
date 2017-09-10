@@ -1,0 +1,36 @@
+\documentclass[]{article}
+
+%opening
+\title{Problem 4}
+\author{Evan Burton, ID: 010945129, Undergraduate}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+Let $X = (x_1,0), (x_2,0), \cdots , (x_{20},0)$ be a set of 20 distinct points on the positive x-axis and $Y = (0,y_1), (0,y_2), \cdots , (0,y_{16})$ be a set of 16 distinct points on the positive y-axis.  Join each point in X to each point in Y by a line segment.  Consider all intersection points of these line segments that are not on the x- axis or y-axis.  Assuming that no three line segments meet at the same point how many different intersection points are there? 
+
+\section{Finding a Pattern}
+Suppose there are $j$ points on the y-axis and $i$ points on the x-axis, where $i,j \geq 2$. We can connect $x_1$ to all points on the y-axis. Then, $x_2 \rightarrow y_1$ will have $j-1$ intersections, $x_2 \rightarrow y_2$ will have $j-2$, and so on until $x_2 \rightarrow y_j$, which will have no intersections with $x_1 \rightarrow Y$, except at the axes. This requires that no three line segments meet at the same point.
+
+We repeat this process, for the next point on the x-axis obtaining: $x_3 \rightarrow y_1$: $(j-1)+(j-1)$ intersections (since the lines from $x_2\rightarrow Y$ are intersected as well), $x_3 \rightarrow y_2$: $(j-2)+(j-2)$, and so on. For $i$ points on the x-axis and $j$ on the y-axis, we obtain:
+$$1\sum_{k=1}^{j-1}(j-k) + 2\sum_{k=1}^{j-1}(j-k) + 3\sum_{k=1}^{j-1}(j-k) + \cdots + (i-1)\sum_{k=1}^{j-1}(j-k)$$
+$$=\sum_{k=1}^{j-1}(j-k)\sum_{h=1}^{i-1}(h) 
+= \sum_{k=1}^{j-1}(k)\sum_{h=1}^{i-1}(h)
+$$
+$$
+= \frac{1}{2}(j-1)(j)\cdot \frac{1}{2}(i-1)(i)$$
+
+$$=\frac{ij}{4}(ij-i-j+1)$$
+
+To find this pattern, I had to draw the easier cases of $6,7,8$ total points. There would be a cool picture here of the pattern for these cases if Geogebra didn't crash on launch.
+
+\section{Solution}
+For 20 points on the x-axis and 16 points on the y-axis, the number of intersections is given by:
+
+$$\frac{16\cdot 20}{4}\cdot(16\cdot 20 - 16 - 20 + 1)
+= 80(320 - 35) = 22,800
+$$
+
+\end{document}
